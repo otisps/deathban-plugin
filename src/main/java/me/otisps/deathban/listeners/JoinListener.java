@@ -10,9 +10,9 @@ public class JoinListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void playerJoinEvent(PlayerJoinEvent event){
-
         if(DeathBan.getInstance().isUserPresent(event.getPlayer())){
             event.getPlayer().kickPlayer(DeathBan.getInstance().getBanMessage());
         }
+        DeathBan.getInstance().storeUsername(event.getPlayer());
     }
 }

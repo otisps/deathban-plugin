@@ -4,4 +4,8 @@ main: me.otisps.deathban.DeathBan
 api-version: 1.18
 authors: [ otisps ]
 description: Ban the player on death. The ban is permanent and does not depend on what kind of death it is (like some other deathban plugins). You die, you're banned. On the kick screen, a configurable message is displayed with link to http://revive.minecraftislands.com/. The plugin has the commands deathban [player] reset and the usual deathban reload
-website: http://revive.minecraftislands.com/.
+website: https://revive.minecraftislands.com/.
+commands:
+  deathban:
+    description: The plugin has the commands deathban [player] reset and the usual deathban reload
+    usage: /deathban [player] reset or /deathban reload
