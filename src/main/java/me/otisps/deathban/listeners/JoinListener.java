@@ -1,6 +1,7 @@
 package me.otisps.deathban.listeners;
 
 import me.otisps.deathban.DeathBan;
+import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -21,6 +22,7 @@ public class JoinListener implements Listener {
     public void onPlayerEnter(final PlayerJoinEvent event) {
         if (event.getPlayer().isDead()) {
             event.getPlayer().spigot().respawn();
+            event.getPlayer().setGameMode(GameMode.SURVIVAL);
         }
     }
 }
