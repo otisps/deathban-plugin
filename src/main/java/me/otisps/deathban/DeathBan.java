@@ -18,8 +18,6 @@ import java.util.regex.Pattern;
 
 public final class DeathBan extends JavaPlugin {
     private static DeathBan instance;
-    private final Pattern hexPattern = Pattern.compile("#[a-fA-F0-9]{6}");
-    private final Pattern linkPattern = Pattern.compile("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
     private FileConfiguration config = this.getConfig();
     private File dataFile;
     private FileConfiguration data;
@@ -30,23 +28,23 @@ public final class DeathBan extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        this.saveDefaultConfig();
-        this.getConfig();
-        createCustomConfig();
-
         instance = this;
-        System.out.println("[DeathBan] Plugin Enabled!");
+        instance.saveDefaultConfig();
+        instance.getConfig();
+        instance.createCustomConfig();
+
+        instance.getLogger().info("[DeathBan] Plugin Enabled!");
 
         getServer().getPluginManager().registerEvents(new DeathListener(), this);
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
 
-        this.getCommand("deathban").setExecutor(new DeathBanCommand());
+        instance.getCommand("deathban").setExecutor(new DeathBanCommand());
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        System.out.println("[DeathBan] Plugin Disabled!");
+        instance.getLogger().info("[DeathBan] Plugin Disabled!");
 
     }
     private void createCustomConfig() {
