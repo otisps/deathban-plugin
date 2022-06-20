@@ -10,9 +10,17 @@ public class JoinListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void playerJoinEvent(PlayerJoinEvent event){
+        DeathBan.getInstance().storeUsername(event.getPlayer());
         if(DeathBan.getInstance().isUserPresent(event.getPlayer())){
             event.getPlayer().kickPlayer(DeathBan.getInstance().getBanMessage());
+            return;
         }
-        DeathBan.getInstance().storeUsername(event.getPlayer());
+    }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onPlayerEnter(final PlayerJoinEvent event) {
+        if (event.getPlayer().isDead()) {
+            event.getPlayer().spigot().respawn();
+        }
     }
 }

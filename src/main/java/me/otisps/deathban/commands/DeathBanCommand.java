@@ -19,7 +19,7 @@ public class DeathBanCommand implements CommandExecutor {
                 String username = args[0].toLowerCase(Locale.ROOT);
                 DeathBan plugin = DeathBan.getInstance();
                 plugin.removeUser(plugin.findUUID(username));
-                System.out.println(username + " was removed" + plugin.findUUID(username));
+                System.out.println("Player " + username + " was removed, With UUID: " + plugin.findUUID(username));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
